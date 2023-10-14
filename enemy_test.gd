@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed : int = 75
+@export var speed : int
 @onready var player = get_tree().get_root().get_node("MainScene/Player") 
 @onready var alive: bool = true
 @onready var health: int = 1
