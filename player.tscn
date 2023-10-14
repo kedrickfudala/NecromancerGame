@@ -21,7 +21,7 @@ position = Vector2(36, 16)
 polygon = PackedVector2Array(-36, -12, 26, 20, -35, 49, -97, 20)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.35, 0.35)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -41,6 +41,7 @@ one_shot = true
 autostart = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(-2, -574)
 scale = Vector2(17.9702, 17.9702)
 texture = ExtResource("3_8b1ro")

@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var sprite = $Sprite2D
 @onready var animation : int = 0
+@export var souls_needed : int = 2
 
 @onready var player = get_tree().get_root().get_node("MainScene/Player") 
 
@@ -20,6 +21,6 @@ func _process(_delta):
 			sprite.frame = 0
 
 func _on_area_entered(_area):
-	if player.cur_souls >= 2:
+	if player.cur_souls >= souls_needed:
 		player.resurrect()
 		queue_free()
