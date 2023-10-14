@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq4cm77ewys6j"]
+
+[ext_resource type="Script" path="res://player_body.gd" id="1_lrmsc"]
+[ext_resource type="Texture2D" uid="uid://ceg6k74a45p4k" path="res://soul.png" id="2_abshr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2725"]
+radius = 9.0
+height = 32.0
+
+[node name="playerBody" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_lrmsc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.176471, 0.235294, 0.203922, 1)
+position = Vector2(0, -6)
+texture = ExtResource("2_abshr")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_k2725")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered" flags=18]

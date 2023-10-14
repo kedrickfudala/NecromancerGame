@@ -6,14 +6,17 @@ extends CharacterBody2D
 @onready var cur_health : int = max_health
 @onready var trail_timer = $TrailTimer
 @onready var ghost_timer = $GhostTimer
-@onready var souls : int = 0
+@onready var total_souls : int = 0
+@onready var cur_souls : int = 0
 @export var alive : bool = true
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
+@onready var body : PackedScene = preload("res://player_body.tscn")
 
 func _ready():
 	global_position = to_global(Vector2(0, 0))
 	z_index = 4
+	ghost_timer.set_paused(true)
 
 func _physics_process(_delta):
 	
@@ -26,17 +29,18 @@ func _physics_process(_delta):
 			create_trail()
 			trail_timer.start()
 	
-	set_collision_mask_value(5, !alive)
+	if ghost_timer.is_stopped(): 
+		print("game over")
+		get_tree().paused = true
 	
-	if !alive:
-		ghost_timer.start()
+	#set_collision_mask_value(5, !alive)
 
 func _on_hurtbox_area_entered(_area):
 	if alive:
 		cur_health -= 50
 		print("ouch! my health is " + str(cur_health))
 		if cur_health <= 0:
-			alive = false
+			ghost_mode()
 #			print("game over")
 #			get_tree().paused = true
 			
@@ -47,3 +51,21 @@ func create_trail():
 	trail_inst.global_position = global_position + (target_pos * -1)
 	trail_inst.scale = Vector2(1, 1)
 	trail_inst.z_index = 1
+	
+func ghost_mode():
+	alive = false
+	set_collision_mask_value(5, true)
+	var body_inst = body.instantiate()
+	get_tree().current_scene.add_child(body_inst)
+	body_inst.global_position = global_position + (target_pos * -1)
+	body_inst.scale = Vector2(3, 3)
+	body_inst.z_index = 1
+	ghost_timer.start()
+	ghost_timer.set_paused(false)
+	
+func resurrect():
+	alive = true
+	cur_health = max_health
+	set_collision_mask_value(5, false)
+	ghost_timer.set_paused(true)
+	cur_souls = 0

@@ -26,6 +26,5 @@ shape = SubResource("CapsuleShape2D_53a4b")
 disabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.5
 one_shot = true
 autostart = true
