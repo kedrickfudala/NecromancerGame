@@ -20,12 +20,15 @@ func _ready():
 	ghost_timer.set_paused(true)
 
 func _physics_process(_delta):
-	
-	target_pos = (get_global_mouse_position() - global_position).normalized()
-	velocity = target_pos * (speed + boost)
+	if global_position.distance_to(get_global_mouse_position()) > 200:
+		target_pos = (get_global_mouse_position() - global_position).normalized()
+		velocity = target_pos * (speed + boost)
+	else:
+		velocity = Vector2(0, 0)
+
 	move_and_slide()
 	
-	if Input.is_action_pressed("left_click") and alive:
+	if alive and Input.is_action_pressed("left_click"):
 		if trail_timer.is_stopped(): 
 			create_trail()
 			trail_timer.start()
@@ -44,9 +47,6 @@ func _on_hurtbox_area_entered(_area):
 		print("ouch! my health is " + str(cur_health))
 		if cur_health <= 0:
 			ghost_mode()
-#			print("game over")
-#			get_tree().paused = true
-			
 
 func create_trail():
 	var trail_inst = trail.instantiate()
