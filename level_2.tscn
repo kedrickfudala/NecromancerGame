@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwkvedrljfsul"]
+
+[ext_resource type="PackedScene" uid="uid://f77s1jxtat02" path="res://player.tscn" id="1_xv41v"]
+
+[sub_resource type="TileSet" id="TileSet_cn1fw"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_xv41v")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_cn1fw")
+format = 2
