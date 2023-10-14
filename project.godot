@@ -19,6 +19,6 @@ config/icon="res://icon.svg"
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemies"
-2d_physics/layer_4="Pickups"
+2d_physics/layer_3="Enemy_Hurt"
+2d_physics/layer_4="Enemy_Hit"
 2d_physics/layer_5="Powder"

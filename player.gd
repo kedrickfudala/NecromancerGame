@@ -17,8 +17,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_hurtbox_area_entered(area):
-	cur_health -= 10
-	print("ouch!")
+	cur_health -= 50
+	print("ouch! " + str(cur_health))
+	if cur_health <= 0:
+		print("game over")
+		get_tree().paused = true
 
 func create_trail():
 	var trail_inst = trail.instantiate()

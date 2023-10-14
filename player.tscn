@@ -10,7 +10,7 @@ size = Vector2(126, 126)
 radius = 68.0074
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("1_pxuwf")
 speed = 300
 
@@ -25,7 +25,7 @@ zoom = Vector2(0.6, 0.6)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_anhp3")
