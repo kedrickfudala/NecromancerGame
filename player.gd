@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var total_souls : int = 0
 @onready var cur_souls : int = 0
 @export var alive : bool = true
+@onready var boost: int = 0
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
 @onready var body : PackedScene = preload("res://player_body.tscn")
@@ -21,7 +22,7 @@ func _ready():
 func _physics_process(_delta):
 	
 	target_pos = (get_global_mouse_position() - global_position).normalized()
-	velocity = target_pos * speed
+	velocity = target_pos * (speed + boost)
 	move_and_slide()
 	
 	if Input.is_action_pressed("left_click") and alive:
@@ -32,6 +33,8 @@ func _physics_process(_delta):
 	if ghost_timer.is_stopped(): 
 		print("game over")
 		get_tree().paused = true
+		
+	if boost > 0: boost -= 10
 	
 	#set_collision_mask_value(5, !alive)
 
@@ -62,10 +65,12 @@ func ghost_mode():
 	body_inst.z_index = 1
 	ghost_timer.start()
 	ghost_timer.set_paused(false)
+	boost = 600
 	
 func resurrect():
 	alive = true
 	cur_health = max_health
 	set_collision_mask_value(5, false)
 	ghost_timer.set_paused(true)
+	ghost_timer.start()
 	cur_souls = 0

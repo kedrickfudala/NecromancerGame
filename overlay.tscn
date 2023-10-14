@@ -1,16 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq4ha84thirne"]
+[gd_scene load_steps=3 format=3 uid="uid://bq4ha84thirne"]
 
 [ext_resource type="Script" path="res://overlay.gd" id="1_eb7p7"]
+[ext_resource type="PackedScene" uid="uid://c5kjw7j0a1rep" path="res://soul_test.tscn" id="2_al5ju"]
 
 [node name="overlay" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 570.0
+offset_right = -47.0
+offset_bottom = 570.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.125, 0.12)
+color = Color(1, 1, 1, 0)
 script = ExtResource("1_eb7p7")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 400.0
+offset_right = 1400.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Souls: 0 / 0"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 400.0
+offset_top = -648.0
+offset_right = 1400.0
+theme_override_font_sizes/font_size = 150
+text = "Time: 10.00 s"
+vertical_alignment = 1
+
+[node name="soulTest" parent="." instance=ExtResource("2_al5ju")]
+position = Vector2(200, 375)
+scale = Vector2(17, 17)

@@ -1,11 +1,10 @@
 extends ColorRect
 
+@onready var soulsText = $Label
+@onready var timerText = $Label2
+@onready var player = get_tree().get_root().get_node("MainScene/Player")
+@onready var timer = get_tree().get_root().get_node("MainScene/Player/GhostTimer") 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	soulsText.text = ("Souls: " + str(player.total_souls) + " / " + str(player.cur_souls))
+	timerText.text = ("Time: " + str(snapped(timer.time_left, 0.1)) + " s")
