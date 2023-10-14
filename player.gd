@@ -44,6 +44,6 @@ func _on_hurtbox_area_entered(_area):
 func create_trail():
 	var trail_inst = trail.instantiate()
 	get_tree().current_scene.add_child(trail_inst)
-	trail_inst.global_position = global_position + Vector2(-100, -25)
+	trail_inst.global_position = global_position + (target_pos * -1)
 	trail_inst.scale = Vector2(1, 1)
 	trail_inst.z_index = 1
