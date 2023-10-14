@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcf851g6td1bw"]
+[gd_scene load_steps=13 format=3 uid="uid://bcf851g6td1bw"]
 
 [ext_resource type="PackedScene" uid="uid://btwp22n2foufp" path="res://enemy_test.tscn" id="1_1mtxb"]
 [ext_resource type="PackedScene" uid="uid://f77s1jxtat02" path="res://player.tscn" id="2_y3u26"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3nwdk2fixmr4" path="res://newWall1.png" id="4_13o30"]
 [ext_resource type="Texture2D" uid="uid://om73ajmuodmk" path="res://floor.png" id="5_t8tck"]
 [ext_resource type="Texture2D" uid="uid://djv0cy05wad5b" path="res://wall2.png" id="6_7rv6x"]
+[ext_resource type="PackedScene" uid="uid://ds7rgdgdqyoxo" path="res://enemy_spawner.tscn" id="7_468p4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3hpxv"]
 texture = ExtResource("3_f7ljh")
@@ -69,3 +70,6 @@ layer_1/tile_data = PackedInt32Array(-2162679, 1, 0, -2097142, 1, 0, -2031605, 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
+
+[node name="enemySpawner" parent="." instance=ExtResource("7_468p4")]
+position = Vector2(-431, 141)

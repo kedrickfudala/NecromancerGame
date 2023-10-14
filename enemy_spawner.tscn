@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds7rgdgdqyoxo"]
+
+[ext_resource type="Script" path="res://enemy_spawner.gd" id="1_jj1me"]
+[ext_resource type="Texture2D" uid="uid://b748pqr0r75tt" path="res://Powder.png" id="2_exhgs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53a4b"]
+radius = 6.99999
+
+[node name="enemySpawner" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_jj1me")
+radius = 1000
+speed = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.631373, 0, 0.294118, 1)
+scale = Vector2(5, 5)
+texture = ExtResource("2_exhgs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 43)
+rotation = 1.5708
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_53a4b")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+autostart = true
