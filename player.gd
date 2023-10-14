@@ -7,29 +7,39 @@ extends CharacterBody2D
 @onready var trail_timer = $TrailTimer
 @onready var ghost_timer = $GhostTimer
 @onready var souls : int = 0
-@onready var alive : bool = true
+@export var alive : bool = true
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
 
 func _ready():
+	global_position = to_global(Vector2(0, 0))
 	z_index = 4
 
 func _physics_process(_delta):
+	
 	target_pos = (get_global_mouse_position() - global_position).normalized()
 	velocity = target_pos * speed
-	if Input.is_action_pressed("left_click"):
+	move_and_slide()
+	
+	if Input.is_action_pressed("left_click") and alive:
 		if trail_timer.is_stopped(): 
 			create_trail()
 			trail_timer.start()
-	move_and_slide()
+	
 	set_collision_mask_value(5, !alive)
+	
+	if !alive:
+		ghost_timer.start()
 
 func _on_hurtbox_area_entered(_area):
-	cur_health -= 50
-	print("ouch! " + str(cur_health))
-	if cur_health <= 0:
-		print("game over")
-		get_tree().paused = true
+	if alive:
+		cur_health -= 50
+		print("ouch! my health is " + str(cur_health))
+		if cur_health <= 0:
+			alive = false
+#			print("game over")
+#			get_tree().paused = true
+			
 
 func create_trail():
 	var trail_inst = trail.instantiate()

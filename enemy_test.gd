@@ -10,6 +10,11 @@ func _ready():
 	z_index = 4
 
 func _physics_process(_delta):
+	if global_position.y > player.global_position.y:
+		z_index = player.z_index + 1
+	else:
+		z_index = player.z_index - 1
+	
 	if health <= 0:
 		die()
 	var target_postion = (player.global_position - global_position).normalized()
