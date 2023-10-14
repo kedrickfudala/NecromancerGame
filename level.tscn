@@ -1,4 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcf851g6td1bw"]
+[gd_scene load_steps=15 format=3 uid="uid://bcf851g6td1bw"]
+
+[ext_resource type="PackedScene" uid="uid://btwp22n2foufp" path="res://enemy_test.tscn" id="1_1mtxb"]
+[ext_resource type="PackedScene" uid="uid://bq4ha84thirne" path="res://overlay.tscn" id="1_77380"]
 
 [ext_resource type="PackedScene" uid="uid://f77s1jxtat02" path="res://player.tscn" id="2_y3u26"]
 [ext_resource type="Texture2D" uid="uid://b5bbakkf1bhmb" path="res://Wall.png" id="3_f7ljh"]
@@ -52,6 +55,10 @@ sources/3 = SubResource("TileSetAtlasSource_m6wrs")
 visible = false
 color = Color(0, 0, 0, 1)
 
+[node name="overlay" parent="Menu" instance=ExtResource("1_77380")]
+
+[node name="enemyTest" parent="." instance=ExtResource("1_1mtxb")]
+position = Vector2(310, 371)
 [node name="Menu" type="CanvasLayer" parent="."]
 visible = false
 
