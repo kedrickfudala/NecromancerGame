@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://4t3ok12pxdo"]
+[gd_scene load_steps=6 format=3 uid="uid://btwp22n2foufp"]
 
 [ext_resource type="Script" path="res://enemy_test.gd" id="1_bh17x"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_l5ks4"]
+[ext_resource type="Texture2D" uid="uid://djleevtuseepu" path="res://icon.svg" id="2_351mp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6x05"]
+size = Vector2(25.8, 25.2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0two"]
+size = Vector2(25.6, 25.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5drff"]
+size = Vector2(25.4, 25)
 
 [node name="enemyTest" type="CharacterBody2D"]
 script = ExtResource("1_bh17x")
@@ -16,25 +18,23 @@ script = ExtResource("1_bh17x")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.686275, 0.0509804, 0.164706, 1)
 position = Vector2(50, 50)
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_l5ks4")
+texture = ExtResource("2_351mp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(50, 50)
+position = Vector2(48.5, 50)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_v6x05")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(50, 50)
+position = Vector2(48, 49.5)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_p0two")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(50, 50)
+position = Vector2(49.5, 50.5)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_5drff")
