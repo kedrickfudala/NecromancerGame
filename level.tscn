@@ -50,6 +50,8 @@ sources/3 = SubResource("TileSetAtlasSource_m6wrs")
 
 [node name="MainScene" type="Node2D"]
 
+[node name="Menu" type="CanvasLayer" parent="."]
+
 [node name="enemyTest" parent="." instance=ExtResource("1_1mtxb")]
 position = Vector2(310, 371)
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5kjw7j0a1rep"]
+
+[ext_resource type="Texture2D" uid="uid://k3pqbwoqe03a" path="res://soul_sprite.png" id="1_mpgpx"]
+[ext_resource type="Script" path="res://soulTest.gd" id="2_frxf8"]
+
+[node name="soulTest" type="Area2D"]
+script = ExtResource("2_frxf8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mpgpx")
+hframes = 6
