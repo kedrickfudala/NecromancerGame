@@ -13,7 +13,7 @@ extends StaticBody2D
 func _process(delta):
 	x += (speed * delta)
 	global_position = Vector2(sin(x) * radius, cos(x) * radius)
-
+	
 	if timer.is_stopped(): 
 		vis = (global_position.distance_to(player.global_position) < 1000)
 		#print(str(global_position.distance_to(player.global_position)) + " " + str(vis))

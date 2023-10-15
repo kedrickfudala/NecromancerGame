@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var target_pos = Vector2(0, 0)
 @export var speed : int = 500
+@onready var max_speed = speed
 @export var max_health : int = 100
 @onready var cur_health : int = max_health
 @onready var trail_timer = $TrailTimer
@@ -11,6 +12,7 @@ extends CharacterBody2D
 @export var alive : bool = true
 @onready var boost: float = 0
 @onready var x = 0
+@onready var sprite = $Sprite2D
 @export var soul_goal : int = 25
 @export var soul_revive_goal : int = 2
 
@@ -24,12 +26,14 @@ func _ready():
 
 func _physics_process(delta):
 	x += delta
+	target_pos = (get_global_mouse_position() - global_position).normalized()
+
 	if global_position.distance_to(get_global_mouse_position()) > 200:
-		target_pos = (get_global_mouse_position() - global_position).normalized()
-		velocity = target_pos * (speed + boost)
+		speed = max_speed
 	else:
-		velocity = Vector2(0, 0)
-		
+		speed = 0
+	velocity = target_pos * (speed + boost)
+
 	move_and_slide()
 	
 	if alive:
@@ -37,16 +41,23 @@ func _physics_process(delta):
 			if trail_timer.is_stopped(): 
 				create_trail()
 				trail_timer.start()
-		if Input.is_action_pressed("right_click"):
-			boost = -1800
+		if Input.is_action_just_pressed("right_click"):
+			boost = -1700
+			var launch = create_trail()
+			launch.launched = true
+			for i in range(4):
+				launch = create_trail()
+				launch.launched = true
+				launch.angle = (1+i)*PI/16
+				launch = create_trail()
+				launch.launched = true
+				launch.angle = -(1+i)*PI/16
 	
 	if ghost_timer.is_stopped(): 
 		print("game over")
 		get_tree().paused = true
 		
 	boost *= 0.95
-	
-	#set_collision_mask_value(5, !alive)
 
 func _on_hurtbox_area_entered(_area):
 	if alive:
@@ -61,6 +72,7 @@ func create_trail():
 	trail_inst.global_position = global_position + (target_pos * -1)
 	trail_inst.scale = Vector2(1, 1)
 	trail_inst.z_index = 1
+	return trail_inst
 	
 func ghost_mode():
 	alive = false
@@ -73,6 +85,7 @@ func ghost_mode():
 	ghost_timer.start()
 	ghost_timer.set_paused(false)
 	boost = 600
+	modulate = (Color(194,236,251, 175))
 	
 func resurrect():
 	alive = true
@@ -81,6 +94,7 @@ func resurrect():
 	ghost_timer.set_paused(true)
 	ghost_timer.start()
 	cur_souls = 0
+	sprite.set_modulate(Color(0,0,0, 255))
 	
 func harvest_soul():
 	total_souls += 1
