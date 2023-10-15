@@ -3,7 +3,7 @@ extends Area2D
 @onready var sprite = $Sprite2D
 @onready var animation : int = 0
 
-func _process(delta):
+func _process(_delta):
 	animation += 1
 	if animation == 3:
 		animation = 0

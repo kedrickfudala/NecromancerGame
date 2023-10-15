@@ -7,15 +7,7 @@ extends CharacterBody2D
 
 @onready var body : PackedScene = preload("res://body.tscn")
 
-func _ready():
-	z_index = 4
-
 func _physics_process(_delta):
-	if global_position.y > player.global_position.y:
-		z_index = player.z_index + 1
-	else:
-		z_index = player.z_index - 1
-	
 	if health <= 0:
 		die()
 	var target_postion = (player.global_position - global_position).normalized()
@@ -35,9 +27,3 @@ func die():
 func _on_hurtbox_area_entered(_area):
 	health -= 1
 	print("enemy hurt!")
-
-
-func _on_enemy_box_area_entered(area):
-	print("runs")
-	velocity = -area.global_position
-	move_and_slide()

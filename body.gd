@@ -6,11 +6,6 @@ extends Area2D
 @onready var animation : int = 0
 
 func _process(_delta):
-	if global_position.y > player.global_position.y:
-		z_index = player.z_index + 1
-	else:
-		z_index = player.z_index - 1
-	
 	animation += 1
 	if animation == 3:
 		animation = 0

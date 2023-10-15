@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://1tojn2hv2bg2"]
+[gd_scene load_steps=3 format=3 uid="uid://1tojn2hv2bg2"]
 
 [ext_resource type="Script" path="res://door.gd" id="1_ji616"]
+[ext_resource type="Texture2D" uid="uid://b8rhhnn7edvdq" path="res://finalDoor1.png" id="1_y8tam"]
 
-[node name="Door" type="Sprite2D"]
+[node name="Door" type="StaticBody2D"]
+z_index = 4
+y_sort_enabled = true
 script = ExtResource("1_ji616")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -22)
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("1_y8tam")
