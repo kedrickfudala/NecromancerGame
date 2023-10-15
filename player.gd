@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var target_pos = Vector2(0, 0)
-@export var speed : int
+@export var speed : int = 500
 @onready var max_speed = speed
 @export var max_health : int = 100
 @onready var cur_health : int = max_health
@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var boost: float = 0
 @onready var x = 0
 @onready var sprite = $Sprite2D
+@export var soul_goal : int = 25
+@export var soul_revive_goal : int = 2
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
 @onready var body : PackedScene = preload("res://player_body.tscn")
@@ -25,11 +27,13 @@ func _ready():
 func _physics_process(delta):
 	x += delta
 	target_pos = (get_global_mouse_position() - global_position).normalized()
+
 	if global_position.distance_to(get_global_mouse_position()) > 200:
 		speed = max_speed
 	else:
 		speed = 0
 	velocity = target_pos * (speed + boost)
+
 	move_and_slide()
 	
 	if alive:
@@ -94,7 +98,7 @@ func resurrect():
 	
 func harvest_soul():
 	total_souls += 1
-	if cur_souls < 2: # set < num of souls required to resurrect 
+	if cur_souls < soul_revive_goal: # set < num of souls required to resurrect 
 		cur_souls += 1
 		var soul_inst = floater.instantiate()
 		get_tree().current_scene.add_child(soul_inst)

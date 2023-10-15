@@ -1,14 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://1tojn2hv2bg2"]
 
 [ext_resource type="Script" path="res://door.gd" id="1_ji616"]
-[ext_resource type="Texture2D" uid="uid://b8rhhnn7edvdq" path="res://finalDoor1.png" id="1_y8tam"]
+[ext_resource type="Texture2D" uid="uid://bnodi0s5cuv8x" path="res://Tower-Sheet.png" id="2_v22jq"]
 
 [node name="Door" type="StaticBody2D"]
 z_index = 4
 y_sort_enabled = true
+scale = Vector2(4, 4)
+collision_mask = 6
 script = ExtResource("1_ji616")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -22)
+position = Vector2(0, -66)
 scale = Vector2(1.71, 1.71)
-texture = ExtResource("1_y8tam")
+texture = ExtResource("2_v22jq")
+hframes = 8
+vframes = 4
+frame = 22
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(0, 15.5, -26.5, 0.5, 0, -11, 26, 1.5)
