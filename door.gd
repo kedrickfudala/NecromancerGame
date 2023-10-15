@@ -19,7 +19,7 @@ func _process(_delta):
 				sprite.frame = 16
 		sprite.frame += 1
 	
-	if global_position.distance_to(player.global_position) < 100 and player.total_souls >= 10 and player.alive:
+	if global_position.distance_to(player.global_position) < 100 and player.total_souls >= player.soul_goal and player.alive:
 		print("You win!")
 		player.overlay.resultText.text = ("You WIN!")
 		player.result = 1

@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var boost: float = 0
 @onready var x = 0
 @onready var sprite = $Sprite2D
-@export var soul_goal : int = 25
+@export var soul_goal : int = 10
 @export var soul_revive_goal : int = 2
 
 @onready var animation: int = 0

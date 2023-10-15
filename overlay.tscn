@@ -36,6 +36,7 @@ text = "Time: 10.00 s"
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 392.0
 offset_top = -1100.0
 offset_right = 1392.0
@@ -45,6 +46,7 @@ text = "Health: 2"
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
+layout_mode = 0
 offset_left = 4312.0
 offset_top = -3175.0
 offset_right = 6528.0
