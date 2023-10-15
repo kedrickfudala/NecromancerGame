@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccbe5daotfhrp"]
+[gd_scene load_steps=5 format=3 uid="uid://ccbe5daotfhrp"]
 
 [ext_resource type="Script" path="res://homescreen.gd" id="1_cwwa6"]
+[ext_resource type="AudioStream" uid="uid://ch3bxwyeibxhf" path="res://Title Screen.mp3" id="2_gl2aj"]
 
 [sub_resource type="FontVariation" id="FontVariation_rcfus"]
 
@@ -50,5 +51,10 @@ theme = SubResource("Theme_r0rva")
 theme_override_colors/background_color = Color(0.0823529, 0, 0.25098, 1)
 theme_override_font_sizes/font_size = 18
 text = "Soul Sprinter"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gl2aj")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

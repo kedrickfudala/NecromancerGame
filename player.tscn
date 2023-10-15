@@ -4,21 +4,22 @@
 [ext_resource type="Script" path="res://player.gd" id="1_pxuwf"]
 [ext_resource type="Texture2D" uid="uid://hiy3x5sjr5j6" path="res://lightMask2.png" id="3_8b1ro"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_anhp3"]
-radius = 76.2365
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp12m"]
+size = Vector2(129, 126)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 4
 collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_pxuwf")
-speed = 300
+speed = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0xbhm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(36, 16)
-polygon = PackedVector2Array(-36, -12, 26, 20, -35, 49, -97, 20)
+polygon = PackedVector2Array(-36, -12, 27, 18, -36, 49, -98, 18)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.35, 0.35)
@@ -28,10 +29,11 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_anhp3")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_yp12m")
 
 [node name="TrailTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 autostart = true
 

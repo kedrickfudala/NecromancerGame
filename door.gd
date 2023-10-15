@@ -1,4 +1,4 @@
-extends Sprite2D
+extends StaticBody2D
 
 @onready var player = get_tree().get_root().get_node("MainScene/Player")
 
