@@ -1,10 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5kjw7j0a1rep"]
+[gd_scene load_steps=3 format=3 uid="uid://c5x66p0lgw300"]
 
 [ext_resource type="Texture2D" uid="uid://k3pqbwoqe03a" path="res://soul_sprite.png" id="1_mpgpx"]
-[ext_resource type="Script" path="res://soulTest.gd" id="2_frxf8"]
+
+[sub_resource type="GDScript" id="GDScript_hdy4g"]
+script/source = "extends Area2D
+
+@onready var sprite = $Sprite2D
+@onready var animation : int = 0
+
+func _process(_delta):
+	animation += 1
+	if animation == 3:
+		animation = 0
+		if sprite.frame < sprite.hframes - 1:
+			sprite.frame += 1
+		else:
+			sprite.frame = 0
+"
 
 [node name="soulTest" type="Area2D"]
-script = ExtResource("2_frxf8")
+script = SubResource("GDScript_hdy4g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mpgpx")
