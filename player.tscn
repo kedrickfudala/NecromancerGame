@@ -19,7 +19,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_2uns6")
 hframes = 6
 vframes = 24
-frame = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(36, 16)

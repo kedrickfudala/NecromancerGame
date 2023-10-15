@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://btwp22n2foufp"]
 
 [ext_resource type="Script" path="res://enemy_test.gd" id="1_bh17x"]
-[ext_resource type="Texture2D" uid="uid://djleevtuseepu" path="res://icon.svg" id="2_351mp"]
+[ext_resource type="Texture2D" uid="uid://bsn5e2acxwmkt" path="res://Small-8-Direction-Characters_by_AxulArt.png" id="2_0a1ua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0two"]
 size = Vector2(112, 126.031)
@@ -16,8 +16,12 @@ script = ExtResource("1_bh17x")
 speed = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -53)
-texture = ExtResource("2_351mp")
+modulate = Color(0.686275, 0.0509804, 0.164706, 1)
+position = Vector2(0, -50)
+scale = Vector2(6, 6)
+texture = ExtResource("2_0a1ua")
+hframes = 8
+vframes = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(36, -19)
