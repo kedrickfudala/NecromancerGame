@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://djleevtuseepu" path="res://icon.svg" id="2_351mp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0two"]
-size = Vector2(127, 126.031)
+size = Vector2(112, 126.031)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5drff"]
-size = Vector2(128.5, 126)
+size = Vector2(112, 126)
 
 [node name="enemyTest" type="CharacterBody2D"]
 z_index = 4
@@ -16,11 +16,11 @@ script = ExtResource("1_bh17x")
 speed = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.686275, 0.0509804, 0.164706, 1)
+position = Vector2(2, -53)
 texture = ExtResource("2_351mp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(36, 15)
+position = Vector2(36, -19)
 polygon = PackedVector2Array(-36, -12, 27, 18, -36, 49, -98, 18)
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -28,6 +28,7 @@ collision_layer = 4
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(2, -48)
 shape = SubResource("RectangleShape2D_p0two")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -35,7 +36,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 1)
+position = Vector2(2, -48)
 shape = SubResource("RectangleShape2D_5drff")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
