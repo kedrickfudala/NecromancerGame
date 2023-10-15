@@ -52,5 +52,5 @@ position = Vector2(48, 50)
 shape = SubResource("RectangleShape2D_p0two")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="area_entered" from="EnemyBox" to="." method="_on_enemy_box_area_entered"]
 [connection signal="area_entered" from="EnemyBox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="EnemyBox" to="." method="_on_enemy_box_area_entered"]
