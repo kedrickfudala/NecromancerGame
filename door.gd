@@ -21,4 +21,6 @@ func _process(_delta):
 	
 	if global_position.distance_to(player.global_position) < 100 and player.total_souls >= 10 and player.alive:
 		print("You win!")
+		player.overlay.resultText.text = ("You WIN!")
+		player.result = 1
 		get_tree().paused = true

@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var radius : int
+@export var radius : int = 1600
 @export var speed : int
 @onready var timer = $Timer
 @onready var x = 0

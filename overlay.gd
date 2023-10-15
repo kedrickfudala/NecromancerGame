@@ -2,6 +2,8 @@ extends ColorRect
 
 @onready var soulsText = $Label
 @onready var timerText = $Label2
+@onready var healthText = $Label3
+@onready var resultText = $Label4
 @onready var sprite = $soulsSprite
 @onready var player = get_tree().get_root().get_node("MainScene/Player")
 
@@ -11,6 +13,7 @@ extends ColorRect
 func _process(_delta):
 	soulsText.text = ("Souls: " + str(player.total_souls))
 	timerText.text = ("Time: " + str(snapped(timer.time_left, 0.1)) + " s")
+	healthText.text = ("Health: " + str(player.cur_health / 50))
 	
 	animation += 1
 	if animation == 3:

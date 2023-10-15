@@ -6,7 +6,7 @@ extends StaticBody2D
 @onready var direction
 @onready var angle = 0
 
-func _process(delta):
+func _process(_delta):
 	if launched:
 		if !first:
 			direction = (get_global_mouse_position()-global_position).normalized()

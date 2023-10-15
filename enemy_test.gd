@@ -21,8 +21,11 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	animation += 1
-	var angle = atan2(-(player.global_position.y - global_position.y), player.global_position.x - global_position.x)
-	print(angle)
+	angle = atan2(-(player.global_position.y - global_position.y), player.global_position.x - global_position.x)
+	#print(angle)
+	if !player.alive:
+		if angle > 0: angle -= PI
+		else: angle += PI
 	if angle > -5*PI/8 and angle < - 3*PI/8: direction = 3
 	elif angle > -7*PI/8 and angle < -5*PI/8: direction = 4
 	elif (angle > -PI and angle < -7*PI/8) or angle > 7*PI/8 and angle < PI: direction = 5
@@ -39,6 +42,7 @@ func _physics_process(_delta):
 		else:
 			cur_frame = 0
 	sprite.frame = direction + (cur_frame*8)
+	#print(cur_frame)
 
 func die():
 	var body_inst = body.instantiate()

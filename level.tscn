@@ -108,7 +108,7 @@ position = Vector2(0, 60)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
-scale = Vector2(3, 3)
+scale = Vector2(3.5, 3.5)
 tile_set = SubResource("TileSet_bjusa")
 format = 2
 layer_0/name = "Background"

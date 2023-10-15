@@ -20,10 +20,12 @@ extends CharacterBody2D
 @onready var cur_frame: int = 0
 @onready var direction: int = 0
 @onready var color_mod = Color(1, 1, 1, 1)
+@onready var result = 0
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
 @onready var body : PackedScene = preload("res://player_body.tscn")
 @onready var floater : PackedScene = preload("res://floating_soul.tscn")
+@onready var overlay = get_tree().get_root().get_node("MainScene/CanvasLayer/overlay")
 
 func _ready():
 	global_position = to_global(Vector2(0, 0))
@@ -47,7 +49,7 @@ func _physics_process(delta):
 				create_trail()
 				trail_timer.start()
 		if Input.is_action_just_pressed("right_click"):
-			boost = -1700
+			boost = -1800
 			var launch = create_trail()
 			launch.launched = true
 			for i in range(4):
@@ -67,13 +69,14 @@ func _physics_process(delta):
 	
 	if ghost_timer.is_stopped(): 
 		print("game over")
+		overlay.resultText.text = ("Game OVER!")
 		get_tree().paused = true
 		
 	boost *= 0.95
 	
 	animation += 1
 	var angle = atan2(-(get_global_mouse_position().y - global_position.y), get_global_mouse_position().x - global_position.x)
-	print(angle)
+	#print(angle)
 	if angle > -5*PI/8 and angle < - 3*PI/8: direction = 0
 	elif angle > -7*PI/8 and angle < -5*PI/8: direction = 3
 	elif (angle > -PI and angle < -7*PI/8) or angle > 7*PI/8 and angle < PI: direction = 6

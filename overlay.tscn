@@ -21,19 +21,35 @@ layout_mode = 0
 offset_left = 400.0
 offset_right = 1400.0
 offset_bottom = 648.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 text = "Souls: 0 / 0"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 400.0
-offset_top = -648.0
+offset_top = -591.667
 offset_right = 1400.0
+offset_bottom = 56.3335
 theme_override_font_sizes/font_size = 150
 text = "Time: 10.00 s"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 392.0
+offset_top = -1100.0
+offset_right = 1392.0
+offset_bottom = -452.0
+theme_override_font_sizes/font_size = 150
+text = "Health: 2"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 4312.0
+offset_top = -3175.0
+offset_right = 6528.0
+offset_bottom = -1125.0
+theme_override_font_sizes/font_size = 150
 vertical_alignment = 1
 
 [node name="soulsSprite" parent="." instance=ExtResource("2_vq0j2")]
