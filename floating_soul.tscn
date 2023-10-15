@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqxagsd60plgm"]
+
+[ext_resource type="PackedScene" uid="uid://dm8870su7x25t" path="res://souls_sprite.tscn" id="1_4sme6"]
+[ext_resource type="Script" path="res://floating_soul.gd" id="1_eh5dx"]
+
+[node name="floatingSoul" type="Node2D"]
+script = ExtResource("1_eh5dx")
+
+[node name="soulsSprite" parent="." instance=ExtResource("1_4sme6")]
+script = null

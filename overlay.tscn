@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bq4ha84thirne"]
 
 [ext_resource type="Script" path="res://overlay.gd" id="1_eb7p7"]
-[ext_resource type="PackedScene" uid="uid://c5kjw7j0a1rep" path="res://soul_test.tscn" id="2_al5ju"]
+[ext_resource type="PackedScene" uid="uid://dm8870su7x25t" path="res://souls_sprite.tscn" id="2_vq0j2"]
 
 [node name="overlay" type="ColorRect"]
 anchors_preset = 15
@@ -36,6 +36,7 @@ theme_override_font_sizes/font_size = 150
 text = "Time: 10.00 s"
 vertical_alignment = 1
 
-[node name="soulTest" parent="." instance=ExtResource("2_al5ju")]
+[node name="soulsSprite" parent="." instance=ExtResource("2_vq0j2")]
 position = Vector2(200, 375)
-scale = Vector2(17, 17)
+scale = Vector2(15, 15)
+script = null
