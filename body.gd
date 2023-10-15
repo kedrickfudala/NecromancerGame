@@ -22,7 +22,6 @@ func _process(_delta):
 
 func _on_area_entered(_area):
 	if !player.alive:
-		player.total_souls += 1
-		player.cur_souls += 1
+		player.harvest_soul()
 		#print(player.souls)
 		queue_free()

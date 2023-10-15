@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm8870su7x25t"]
+
+[ext_resource type="Texture2D" uid="uid://k3pqbwoqe03a" path="res://soul_sprite.png" id="1_vvphy"]
+[ext_resource type="Script" path="res://soulsSprite.gd" id="2_pwvhw"]
+
+[node name="soulsSprite" type="Sprite2D"]
+texture = ExtResource("1_vvphy")
+hframes = 6
+script = ExtResource("2_pwvhw")
