@@ -15,6 +15,9 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @export var soul_goal : int = 25
 @export var soul_revive_goal : int = 2
+@onready var animation: int = 0
+@onready var cur_frame: int = 0
+@onready var direction: int = 0
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
 @onready var body : PackedScene = preload("res://player_body.tscn")
@@ -58,6 +61,26 @@ func _physics_process(delta):
 		get_tree().paused = true
 		
 	boost *= 0.95
+	
+	animation += 1
+	var angle = atan2(-(get_global_mouse_position().y - global_position.y), get_global_mouse_position().x - global_position.x)
+	print(angle)
+	if angle > -5*PI/8 and angle < - 3*PI/8: direction = 0
+	elif angle > -7*PI/8 and angle < -5*PI/8: direction = 3
+	elif (angle > -PI and angle < -7*PI/8) or angle > 7*PI/8 and angle < PI: direction = 6
+	elif angle > 5*PI/8 and angle < 7*PI/8: direction = 9
+	elif angle > 3*PI/8 and angle < 5*PI/8: direction = 12
+	elif angle > 1*PI/8 and angle < 3*PI/8: direction = 21
+	elif angle > -3*PI/8 and angle < -1*PI/8: direction = 15
+	else: direction = 18
+	if speed != 0: direction+= 1
+	if animation == 5:
+		animation = 0
+		if cur_frame < sprite.hframes - 1:
+			cur_frame += 1
+		else:
+			cur_frame = 0
+	sprite.frame = (direction*6) + cur_frame
 
 func _on_hurtbox_area_entered(_area):
 	if alive:
