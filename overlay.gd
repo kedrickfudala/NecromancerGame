@@ -19,4 +19,3 @@ func _process(_delta):
 			sprite.frame += 1
 		else:
 			sprite.frame = 0
-

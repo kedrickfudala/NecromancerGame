@@ -15,9 +15,11 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @export var soul_goal : int = 25
 @export var soul_revive_goal : int = 2
+
 @onready var animation: int = 0
 @onready var cur_frame: int = 0
 @onready var direction: int = 0
+@onready var color_mod = Color(1, 1, 1, 1)
 
 @onready var trail : PackedScene = preload("res://trail.tscn")
 @onready var body : PackedScene = preload("res://player_body.tscn")
@@ -55,6 +57,13 @@ func _physics_process(delta):
 				launch = create_trail()
 				launch.launched = true
 				launch.angle = -(1+i)*PI/16
+		color_mod = Color(1, 1, 1, 1)
+		color_mod.v = 1
+	else:
+		color_mod = Color(1, 1, 1, 0.5)
+		color_mod.v = 2
+	
+	modulate = color_mod
 	
 	if ghost_timer.is_stopped(): 
 		print("game over")
@@ -108,7 +117,6 @@ func ghost_mode():
 	ghost_timer.start()
 	ghost_timer.set_paused(false)
 	boost = 600
-	modulate = (Color(194,236,251, 175))
 	
 func resurrect():
 	alive = true
@@ -117,7 +125,6 @@ func resurrect():
 	ghost_timer.set_paused(true)
 	ghost_timer.start()
 	cur_souls = 0
-	sprite.set_modulate(Color(0,0,0, 255))
 	
 func harvest_soul():
 	total_souls += 1

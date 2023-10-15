@@ -15,6 +15,7 @@ radius = 1900
 speed = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.631373, 0, 0.294118, 1)
 scale = Vector2(5, 5)
 texture = ExtResource("2_exhgs")

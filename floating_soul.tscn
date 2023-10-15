@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://floating_soul.gd" id="1_eh5dx"]
 
 [node name="floatingSoul" type="Node2D"]
+z_index = 8
 script = ExtResource("1_eh5dx")
 
 [node name="soulsSprite" parent="." instance=ExtResource("1_4sme6")]

@@ -9,7 +9,7 @@ func _ready():
 	
 func _process(_delta):
 	animation += 1
-	if animation == 3:
+	if animation == 4:
 		animation = 0
 		if player.total_souls < player.soul_goal:
 			if sprite.frame == 15:
@@ -19,6 +19,6 @@ func _process(_delta):
 				sprite.frame = 16
 		sprite.frame += 1
 	
-	if global_position.distance_to(player.global_position) < player.soul_goal and player.total_souls >= 10 and player.alive:
+	if global_position.distance_to(player.global_position) < 100 and player.total_souls >= 10 and player.alive:
 		print("You win!")
 		get_tree().paused = true

@@ -46,9 +46,8 @@ one_shot = true
 autostart = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(-2, -574)
-scale = Vector2(17.9702, 17.9702)
+position = Vector2(0, -977)
+scale = Vector2(31.9455, 31.9455)
 texture = ExtResource("3_8b1ro")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
